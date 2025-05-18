@@ -1,0 +1,35 @@
+@model List<Web_Projesi.Models.QuizViewModel>
+
+@{
+    ViewData["Title"] = "Quiz";
+}
+
+<div class="container">
+    <h2 class="text-center mb-4">Quiz</h2>
+
+    <form asp-action="KontrolEt" method="post">
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <div class="card mb-3" style="background-color: #f0f0f0;">
+                <div class="card-body">
+                    <h5 class="text-dark">Soru @(i + 1): @Model[i].KelimeAdi</h5>
+                    <p class="text-dark mb-3">
+                        <i class="fas fa-quote-left text-muted me-2"></i>
+                        @Model[i].OrnekCumle
+                        <i class="fas fa-quote-right text-muted ms-2"></i>
+                    </p>
+                    <input type="hidden" asp-for="@Model[i].KelimeID" />
+                    <input type="hidden" asp-for="@Model[i].KelimeAdi" />
+                    <input type="hidden" asp-for="@Model[i].OrnekCumle" />
+                    <div class="form-group">
+                        <label class="text-dark">Bu kelimenin tanımını yazın:</label>
+                        <input asp-for="@Model[i].KullaniciCevabi" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Cevapları Kontrol Et</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,29 @@
+﻿@model Web_Projesi.Models.Kelimeler
+
+<h1>Kelime Ekle</h1>
+
+<form asp-action="Ekle" method="post">
+    <div class="form-group">
+        <label>Kelime</label>
+        <input asp-for="KelimeAdi" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Tanım</label>
+        <input asp-for="Tanim" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Tür</label>
+        <select asp-for="Tur" class="form-control">
+            <option value="İsim">İsim</option>
+            <option value="Fiil">Fiil</option>
+            <option value="Sıfat">Sıfat</option>
+            <option value="Zarf">Zarf</option>
+            <option value="Diğer">Diğer</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Örnek Cümle</label>
+        <textarea asp-for="OrnekCumle" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>

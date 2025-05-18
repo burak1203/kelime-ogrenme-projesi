@@ -1,0 +1,56 @@
+@model List<Web_Projesi.Models.QuizGecmisiViewModel>
+
+@{
+    ViewData["Title"] = "Quiz Geçmişi";
+}
+
+<div class="container">
+    <div class="card bg-dark text-white">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h2 class="mb-0">Quiz Geçmişi</h2>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-light">Geri</a>
+        </div>
+        <div class="card-body">
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th>Tarih</th>
+                                <th>Puan</th>
+                                <th>Doğru Sayısı</th>
+                                <th>Toplam Soru</th>
+                                <th>Başarı Durumu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var quiz in Model)
+                            {
+                                <tr>
+                                    <td>@quiz.Tarih.ToString("dd/MM/yyyy HH:mm")</td>
+                                    <td>@quiz.Puan</td>
+                                    <td>@quiz.DogruSayisi</td>
+                                    <td>@quiz.ToplamSoru</td>
+                                    <td>
+                                        @{
+                                            var badgeClass = quiz.Puan >= 80 ? "bg-success" :
+                                            quiz.Puan >= 60 ? "bg-warning" : "bg-danger";
+                                        }
+                                        <span class="badge @badgeClass">@quiz.BasariDurumu</span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="text-center">
+                    <p class="mb-0">Henüz quiz sonucunuz bulunmamaktadır.</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>

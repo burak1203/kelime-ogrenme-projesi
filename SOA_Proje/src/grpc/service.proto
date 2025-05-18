@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service IdentityService {
+    rpc ValidateIdentity (IdentityRequest) returns (IdentityResponse);
+}
+
+message IdentityRequest {
+    string tcNo = 1;
+    string firstName = 2;
+    string lastName = 3;
+    int32 birthYear = 4;
+}
+
+message IdentityResponse {
+    bool isValid = 1;
+}

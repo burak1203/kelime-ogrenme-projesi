@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Web_Projesi.Models.Kelimeler>
+
+<h1>Kelime Listesi</h1>
+
+<p>
+    <a asp-action="Ekle" class="btn btn-primary">Yeni Kelime Ekle</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Kelime</th>
+            <th>Tanım</th>
+            <th>Tür</th>
+            <th>Örnek Cümle</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kelime in Model)
+        {
+            <tr>
+                <td>@kelime.KelimeAdi</td>
+                <td>@kelime.Tanim</td>
+                <td>@kelime.Tur</td>
+                <td>@kelime.OrnekCumle</td>
+                <td>
+                    <a asp-action="Duzenle" asp-route-id="@kelime.KelimeID" class="btn btn-warning btn-sm">Düzenle</a>
+                    <form asp-action="Sil" asp-route-id="@kelime.KelimeID" method="post" style="display: inline;">
+                        <button type="submit" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Bu kelimeyi silmek istediğinizden emin misiniz?')">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

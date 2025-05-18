@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="container">
+    @if (Context.Session.GetString("UserName") != null)
+    {
+        <div class="row">
+            <div class="col-md-8">
+                <div class="text-center my-5">
+                    <h1 class="display-4 mb-4">İngilizce Kelime Öğrenme Platformuna Hoş Geldiniz</h1>
+                    <p class="lead mb-4">Etkili ve eğlenceli bir şekilde İngilizce kelime dağarcığınızı geliştirin.</p>
+                </div>
+
+                <div class="card bg-dark text-white">
+                    <div class="card-body p-5">
+                        <h2 class="card-title text-center mb-4">Neden Bizi Seçmelisiniz?</h2>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <h5><i class="fas fa-check-circle text-success"></i> Kişiselleştirilmiş Öğrenme</h5>
+                                <p>Size özel öğrenme planı ve kelime takibi</p>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h5><i class="fas fa-book-reader text-primary"></i> Zengin İçerik</h5>
+                                <p>Binlerce kelime ve örnek cümle</p>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h5><i class="fas fa-chart-line text-warning"></i> İlerleme Takibi</h5>
+                                <p>Detaylı ilerleme raporları ve istatistikler</p>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h5><i class="fas fa-gamepad text-danger"></i> Eğlenceli Quizler</h5>
+                                <p>Öğrendiklerinizi test edin ve pekiştirin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                @await Component.InvokeAsync("UserActivity")
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="text-center my-5">
+            <h1 class="display-4 mb-4">İngilizce Kelime Öğrenme Platformuna Hoş Geldiniz</h1>
+            <p class="lead mb-4">Etkili ve eğlenceli bir şekilde İngilizce kelime dağarcığınızı geliştirin.</p>
+        </div>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                <div class="card bg-dark text-white">
+                    <div class="card-body p-5">
+                        <h2 class="card-title text-center mb-4">Neden Bizi Seçmelisiniz?</h2>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <h5><i class="fas fa-check-circle text-success"></i> Kişiselleştirilmiş Öğrenme</h5>
+                                <p>Size özel öğrenme planı ve kelime takibi</p>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h5><i class="fas fa-book-reader text-primary"></i> Zengin İçerik</h5>
+                                <p>Binlerce kelime ve örnek cümle</p>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h5><i class="fas fa-chart-line text-warning"></i> İlerleme Takibi</h5>
+                                <p>Detaylı ilerleme raporları ve istatistikler</p>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h5><i class="fas fa-gamepad text-danger"></i> Eğlenceli Quizler</h5>
+                                <p>Öğrendiklerinizi test edin ve pekiştirin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-lg mx-2 px-5">Giriş Yap</a>
+            <a asp-controller="Account" asp-action="Register" class="btn btn-success btn-lg mx-2 px-5">Kayıt Ol</a>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+}

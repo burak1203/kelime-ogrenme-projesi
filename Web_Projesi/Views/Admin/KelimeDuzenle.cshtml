@@ -1,0 +1,51 @@
+@model Web_Projesi.Models.KelimeYonetimViewModel
+
+@{
+    ViewData["Title"] = "Kelime Düzenle";
+}
+
+<div class="container mt-4 text-white">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Kelime Düzenle</h2>
+        <a href="@Url.Action("Kelimeler")" class="btn btn-secondary">Geri</a>
+    </div>
+
+    <form asp-action="KelimeDuzenle" method="post">
+        <input type="hidden" asp-for="KelimeID" />
+
+        <div class="form-group mb-3">
+            <label asp-for="KelimeAdi">Kelime</label>
+            <input asp-for="KelimeAdi" class="form-control" />
+            <span asp-validation-for="KelimeAdi" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Tanim">Tanım</label>
+            <textarea asp-for="Tanim" class="form-control"></textarea>
+            <span asp-validation-for="Tanim" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Tur">Tür</label>
+            <input asp-for="Tur" class="form-control" />
+            <span asp-validation-for="Tur" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="OrnekCumle">Örnek Cümle</label>
+            <textarea asp-for="OrnekCumle" class="form-control"></textarea>
+            <span asp-validation-for="OrnekCumle" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+            <a asp-action="Kelimeler" class="btn btn-secondary">İptal</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

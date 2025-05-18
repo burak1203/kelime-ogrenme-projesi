@@ -1,0 +1,74 @@
+@model Web_Projesi.Models.AdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Admin Paneli";
+}
+
+<div class="container">
+    <h1 class="text-center mb-5">Admin Paneli</h1>
+
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Kullanıcı Sayısı</h5>
+                    <p class="card-text display-4">@Model.KullaniciSayisi</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Kelime Sayısı</h5>
+                    <p class="card-text display-4">@Model.KelimeSayisi</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-info text-white">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Kategori Sayısı</h5>
+                    <p class="card-text display-4">@Model.KategoriSayisi</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-warning text-white">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Quiz Sayısı</h5>
+                    <p class="card-text display-4">@Model.QuizSayisi</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card bg-white">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">Kelime Yönetimi</h5>
+                    <p class="card-text text-dark">Kelime ekle, düzenle ve sil</p>
+                    <a asp-action="Kelimeler" class="btn btn-dark">Kelime Yönetimi</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-white">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">Kullanıcı Yönetimi</h5>
+                    <p class="card-text text-dark">Kullanıcıları görüntüle ve yönet</p>
+                    <a asp-action="Kullanicilar" class="btn btn-dark">Kullanıcı Yönetimi</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-white">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">Quiz İstatistikleri</h5>
+                    <p class="card-text text-dark">Quiz sonuçlarını görüntüle</p>
+                    <a asp-action="QuizIstatistikleri" class="btn btn-dark">Quiz İstatistikleri</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{
+  "name": "soa_proje",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"node src/api/server.js\" \"node src/grpc/service.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.12.5",
+    "@grpc/proto-loader": "^0.7.13",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "soap": "^1.1.7"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

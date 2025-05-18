@@ -1,0 +1,51 @@
+@model List<Web_Projesi.Models.Quiz>
+
+@if (Model.Any())
+{
+    <div class="card bg-dark text-white mb-4">
+        <div class="card-header">
+            <h5 class="mb-0">Son Quiz Sonuçlarınız</h5>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-dark table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>Tarih</th>
+                            <th>Puan</th>
+                            <th>Başarı</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var quiz in Model)
+                        {
+                            <tr>
+                                <td>@quiz.Tarih.ToString("dd.MM.yyyy HH:mm")</td>
+                                <td>@quiz.Puan</td>
+                                <td>
+                                    @{
+                                        var basariDurumu = quiz.Puan switch
+                                        {
+                                            >= 80 => "Çok İyi",
+                                            >= 60 => "İyi",
+                                            >= 40 => "Orta",
+                                            _ => "Geliştirilebilir"
+                                        };
+                                        var badgeClass = quiz.Puan switch
+                                        {
+                                            >= 80 => "bg-success",
+                                            >= 60 => "bg-info",
+                                            >= 40 => "bg-warning",
+                                            _ => "bg-danger"
+                                        };
+                                    }
+                                    <span class="badge @badgeClass">@basariDurumu</span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

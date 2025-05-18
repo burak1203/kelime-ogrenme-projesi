@@ -1,0 +1,55 @@
+@{
+    var userName = Context.Session.GetString("UserName");
+    var userRole = Context.Session.GetString("UserRole");
+}
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+    <div class="container">
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">Kelime Öğrenme</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+                </li>
+                @if (userName != null)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-controller="Quiz" asp-action="Index">Quiz</a>
+                    </li>
+                    @if (userRole == "Admin")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Admin" asp-action="Index">Admin Paneli</a>
+                        </li>
+                    }
+                }
+            </ul>
+            <ul class="navbar-nav">
+                @if (userName != null)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-controller="QuizGecmisi" asp-action="Index">
+                            <i class="fas fa-history"></i> Quiz Geçmişi
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-controller="Account" asp-action="Logout">Çıkış Yap</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-controller="Account" asp-action="Login">Giriş Yap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-controller="Account" asp-action="Register">Kayıt Ol</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</nav>
+</nav>

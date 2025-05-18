@@ -1,0 +1,24 @@
+@model Web_Projesi.Models.UserActivityViewModel
+
+<div class="card bg-dark text-white mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">Aktivite Özeti</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <p><i class="fas fa-tasks"></i> Toplam Quiz Sayısı: @Model.ToplamQuizSayisi</p>
+                <p><i class="fas fa-chart-line"></i> Ortalama Başarı: %@Math.Round(Model.OrtalamaBasari, 1)</p>
+                @if (Model.SonQuizTarihi.HasValue)
+                {
+                        <p><i class="fas fa-clock"></i> Son Quiz Tarihi: @Model.SonQuizTarihi.Value.ToString("dd/MM/yyyy HH:mm")
+                        </p>
+                }
+                else
+                {
+                        <p><i class="fas fa-clock"></i> Henüz quiz çözülmemiş</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+@model Web_Projesi.Models.QuizSonucViewModel
+
+@{
+    ViewData["Title"] = "Quiz Sonuçları";
+}
+
+<div class="container">
+    <h2 class="text-center mb-4 text-white">Quiz Sonuçları</h2>
+
+    <div class="alert alert-info text-center">
+        <h4>Toplam Puan: @ViewBag.Puan</h4>
+        <p>@ViewBag.DogruSayisi doğru / @ViewBag.ToplamSoru toplam</p>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th class="text-white">Kelime</th>
+                    <th class="text-white">Sizin Cevabınız</th>
+                    <th class="text-white">Doğru Cevap</th>
+                    <th class="text-white">Sonuç</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var sonuc in Model.Sonuclar)
+                {
+                    <tr>
+                        <td class="text-white">@sonuc.KelimeAdi</td>
+                        <td class="text-white">@sonuc.KullaniciCevabi</td>
+                        <td class="text-white">@sonuc.DogruCevap</td>
+                        <td>
+                            @if (sonuc.DogruMu)
+                            {
+                                <span class="badge bg-success">Doğru</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Yanlış</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mt-4">
+        <a asp-action="Index" class="btn btn-primary">Yeni Quiz</a>
+    </div>
+</div>

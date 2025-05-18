@@ -1,0 +1,55 @@
+@{
+    var isLoggedIn = Context.Session.GetString("UserName") != null;
+    var isAdmin = Context.Session.GetString("UserRole") == "Admin";
+}
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="@Url.Action("Index", "Home")">Kelime Öğrenme</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "Home")">Ana Sayfa</a>
+                </li>
+                @if (isLoggedIn)
+                {
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "Quiz")">Quiz</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "QuizGecmisi")">Quiz Geçmişi</a>
+                        </li>
+                    @if (isAdmin)
+                    {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("Index", "Admin")">Admin Paneli</a>
+                                </li>
+                    }
+                }
+            </ul>
+            <ul class="navbar-nav">
+                @if (isLoggedIn)
+                {
+                        <li class="nav-item">
+                            <span class="nav-link">Hoş geldin, @Context.Session.GetString("UserName")</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Logout", "Account")">Çıkış Yap</a>
+                        </li>
+                }
+                else
+                {
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Login", "Account")">Giriş Yap</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Register", "Account")">Kayıt Ol</a>
+                        </li>
+                }
+            </ul>
+        </div>
+    </div>
+</nav>

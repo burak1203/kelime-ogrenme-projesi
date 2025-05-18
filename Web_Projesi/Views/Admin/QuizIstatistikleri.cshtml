@@ -1,0 +1,34 @@
+@model List<Web_Projesi.Models.QuizIstatistikleriViewModel>
+
+@{
+    ViewData["Title"] = "Quiz İstatistikleri";
+}
+
+<div class="container mt-4 text-white">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Quiz İstatistikleri</h2>
+        <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary">Geri</a>
+    </div>
+
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>Quiz ID</th>
+                <th>Kullanıcı Adı</th>
+                <th>Puan</th>
+                <th>Tarih</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var quiz in Model)
+            {
+                <tr>
+                    <td>@quiz.QuizID</td>
+                    <td>@quiz.KullaniciAdi</td>
+                    <td>@quiz.Puan</td>
+                    <td>@quiz.Tarih.ToString("dd/MM/yyyy HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
